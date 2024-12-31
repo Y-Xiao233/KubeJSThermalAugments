@@ -11,5 +11,6 @@ public class Kubejsthermalaugments {
     public Kubejsthermalaugments() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
+        System.out.println("master");
     }
 }
