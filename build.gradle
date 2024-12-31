@@ -103,17 +103,12 @@ repositories {
 
     dependencies {
         minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-        //JEI
-        compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jeiVersion}"))
-        compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jeiVersion}"))
-        runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jeiVersion}"))
-
 
         // Thermal
         implementation(fg.deobf("com.teamcofh:cofh_core:$minecraft_version-$cofhCoreVersion"))
         implementation fg.deobf("com.teamcofh:thermal_core:${minecraft_version}-${thermalCoreVersion}.+")
         implementation fg.deobf("curse.maven:thermal-foundation-222880:$thermalFoundationFile")
-        runtimeOnly(fg.deobf("com.teamcofh:thermal_innovation:$minecraft_version-$thermalInnovationVersion"))
+//        runtimeOnly(fg.deobf("com.teamcofh:thermal_innovation:$minecraft_version-$thermalInnovationVersion"))
         runtimeOnly(fg.deobf("com.teamcofh:thermal_expansion:$minecraft_version-$thermalExpansionVersion"))
 
         //KubeJS
