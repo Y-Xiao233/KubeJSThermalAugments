@@ -7,9 +7,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(Kubejsthermalaugments.MODID)
 public class Kubejsthermalaugments {
-
     public static final String MODID = "kubejsthermalaugments";
-
     public Kubejsthermalaugments() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
