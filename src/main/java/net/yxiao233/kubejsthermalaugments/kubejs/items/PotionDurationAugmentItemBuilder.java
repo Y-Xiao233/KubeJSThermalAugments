@@ -10,27 +10,27 @@ import net.minecraft.world.item.Rarity;
 
 import static cofh.lib.util.constants.NBTTags.*;
 
-public class UpgradeAugmentItemBuilder extends ItemBuilder {
-    private float scaleFactor;
+public class PotionDurationAugmentItemBuilder extends ItemBuilder {
     private Rarity rarity = Rarity.EPIC;
-    public UpgradeAugmentItemBuilder(ResourceLocation i) {
+    private float potionDuration;
+    public PotionDurationAugmentItemBuilder(ResourceLocation i) {
         super(i);
     }
-
-    public UpgradeAugmentItemBuilder setValue(float scaleFactor){
-        this.scaleFactor = scaleFactor;
+    public PotionDurationAugmentItemBuilder setRarityById(String rarityName, int chatFormattingId){
+        this.rarity = Rarity.create(rarityName, ChatFormatting.getById(chatFormattingId));
         return this;
     }
-    public UpgradeAugmentItemBuilder setRarityById(String rarityName, int chatFormattingId){
-        this.rarity = Rarity.create(rarityName,ChatFormatting.getById(chatFormattingId));
+
+    public PotionDurationAugmentItemBuilder setValue(float potionDuration){
+        this.potionDuration = potionDuration;
         return this;
     }
     @Override
     public Item createObject() {
         return new AugmentItem(new Item.Properties().rarity(rarity),
                 AugmentDataHelper.builder()
-                        .type(TAG_AUGMENT_TYPE_UPGRADE)
-                        .mod(TAG_AUGMENT_BASE_MOD,scaleFactor)
+                        .type(TAG_AUGMENT_TYPE_POTION)
+                        .mod(TAG_AUGMENT_POTION_DURATION,potionDuration)
                         .build());
     }
 }

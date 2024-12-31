@@ -10,27 +10,30 @@ import net.minecraft.world.item.Rarity;
 
 import static cofh.lib.util.constants.NBTTags.*;
 
-public class UpgradeAugmentItemBuilder extends ItemBuilder {
-    private float scaleFactor;
+public class RFCoilAugmentItemBuilder extends ItemBuilder {
     private Rarity rarity = Rarity.EPIC;
-    public UpgradeAugmentItemBuilder(ResourceLocation i) {
+    private float energyStorage;
+    private float energyXfer;
+    public RFCoilAugmentItemBuilder(ResourceLocation i) {
         super(i);
     }
-
-    public UpgradeAugmentItemBuilder setValue(float scaleFactor){
-        this.scaleFactor = scaleFactor;
+    public RFCoilAugmentItemBuilder setRarityById(String rarityName, int chatFormattingId){
+        this.rarity = Rarity.create(rarityName, ChatFormatting.getById(chatFormattingId));
         return this;
     }
-    public UpgradeAugmentItemBuilder setRarityById(String rarityName, int chatFormattingId){
-        this.rarity = Rarity.create(rarityName,ChatFormatting.getById(chatFormattingId));
+
+    public RFCoilAugmentItemBuilder setValue(float energyStorage, float energyXfer){
+        this.energyStorage = energyStorage;
+        this.energyXfer = energyXfer;
         return this;
     }
     @Override
     public Item createObject() {
         return new AugmentItem(new Item.Properties().rarity(rarity),
                 AugmentDataHelper.builder()
-                        .type(TAG_AUGMENT_TYPE_UPGRADE)
-                        .mod(TAG_AUGMENT_BASE_MOD,scaleFactor)
+                        .type(TAG_AUGMENT_TYPE_RF)
+                        .mod(TAG_AUGMENT_RF_STORAGE,energyStorage)
+                        .mod(TAG_AUGMENT_RF_XFER,energyXfer)
                         .build());
     }
 }

@@ -9,28 +9,28 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 
 import static cofh.lib.util.constants.NBTTags.*;
-
-public class UpgradeAugmentItemBuilder extends ItemBuilder {
-    private float scaleFactor;
+public class DynamoFuelAugmentItemBuilder extends ItemBuilder {
     private Rarity rarity = Rarity.EPIC;
-    public UpgradeAugmentItemBuilder(ResourceLocation i) {
+    private float fuelEnergy;
+    public DynamoFuelAugmentItemBuilder(ResourceLocation i) {
         super(i);
     }
 
-    public UpgradeAugmentItemBuilder setValue(float scaleFactor){
-        this.scaleFactor = scaleFactor;
+    public DynamoFuelAugmentItemBuilder setRarityById(String rarityName, int chatFormattingId){
+        this.rarity = Rarity.create(rarityName, ChatFormatting.getById(chatFormattingId));
         return this;
     }
-    public UpgradeAugmentItemBuilder setRarityById(String rarityName, int chatFormattingId){
-        this.rarity = Rarity.create(rarityName,ChatFormatting.getById(chatFormattingId));
+
+    public DynamoFuelAugmentItemBuilder setValue(float fuelEnergy){
+        this.fuelEnergy = fuelEnergy;
         return this;
     }
     @Override
     public Item createObject() {
         return new AugmentItem(new Item.Properties().rarity(rarity),
                 AugmentDataHelper.builder()
-                        .type(TAG_AUGMENT_TYPE_UPGRADE)
-                        .mod(TAG_AUGMENT_BASE_MOD,scaleFactor)
+                        .type(TAG_AUGMENT_TYPE_DYNAMO)
+                        .mod(TAG_AUGMENT_DYNAMO_ENERGY,fuelEnergy)
                         .build());
     }
 }

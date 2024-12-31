@@ -10,22 +10,22 @@ import net.minecraft.world.item.Rarity;
 
 import static cofh.lib.util.constants.NBTTags.*;
 
-public class MachineSpeedAugmentItemBuilder extends ItemBuilder {
+public class MachineCatalystAugmentItemBuilder extends ItemBuilder {
     private Rarity rarity = Rarity.EPIC;
-    private float basePower;
+    private float catalystUsage;
     private float processEnergy;
-    public MachineSpeedAugmentItemBuilder(ResourceLocation i) {
+    public MachineCatalystAugmentItemBuilder(ResourceLocation i) {
         super(i);
     }
 
-    public MachineSpeedAugmentItemBuilder setRarityById(String rarityName, int chatFormattingId){
+    public MachineCatalystAugmentItemBuilder setRarityById(String rarityName, int chatFormattingId){
         this.rarity = Rarity.create(rarityName, ChatFormatting.getById(chatFormattingId));
         return this;
     }
 
-    public MachineSpeedAugmentItemBuilder setValue(float basePower, float processEnergy){
+    public MachineCatalystAugmentItemBuilder setValue(float catalystUsage, float processEnergy){
+        this.catalystUsage = catalystUsage;
         this.processEnergy = processEnergy;
-        this.basePower = basePower;
         return this;
     }
     @Override
@@ -33,7 +33,7 @@ public class MachineSpeedAugmentItemBuilder extends ItemBuilder {
         return new AugmentItem(new Item.Properties().rarity(rarity),
                 AugmentDataHelper.builder()
                         .type(TAG_AUGMENT_TYPE_MACHINE)
-                        .mod(TAG_AUGMENT_MACHINE_POWER,basePower)
+                        .mod(TAG_AUGMENT_MACHINE_CATALYST,catalystUsage)
                         .mod(TAG_AUGMENT_MACHINE_ENERGY,processEnergy)
                         .build());
     }
