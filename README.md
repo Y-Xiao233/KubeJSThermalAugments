@@ -182,7 +182,7 @@
 
 ## 示例
 ```JavaScript
-StartupEvents.registry("item",event =>{
+onEvent('item.registry', event => {
     //upgrade_augment
     event.create("ugrade_augment","thermal:upgrade_augment").setValue(12).setRarityById("test_rarity",1)
 
