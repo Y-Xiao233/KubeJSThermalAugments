@@ -1,7 +1,8 @@
 package net.yxiao233.kubejsthermalaugments.kubejs.items;
 
 import cofh.core.util.helpers.AugmentDataHelper;
-import cofh.thermal.lib.common.item.AugmentItem;
+import cofh.thermal.lib.item.AugmentItem;
+import dev.latvian.mods.kubejs.KubeJS;
 import dev.latvian.mods.kubejs.item.ItemBuilder;
 import net.minecraft.ChatFormatting;
 import net.minecraft.resources.ResourceLocation;
@@ -30,7 +31,7 @@ public class DynamoOutputAugmentItemBuilder extends ItemBuilder {
     }
     @Override
     public Item createObject() {
-        return new AugmentItem(new Item.Properties().rarity(rarity),
+        return new AugmentItem(new Item.Properties().rarity(rarity).tab(KubeJS.tab),
                 AugmentDataHelper.builder()
                         .type(TAG_AUGMENT_TYPE_DYNAMO)
                         .mod(TAG_AUGMENT_DYNAMO_ENERGY,fuelEnergy)

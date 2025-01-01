@@ -26,13 +26,13 @@ side = "BOTH"
 [[dependencies."${mod_id}"]]
 modId = "kubejs"
 mandatory = true
-versionRange = "[2001.6.3-build.45,)"
+versionRange = "[1902.6.2-build.73,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies."${mod_id}"]]
 modId = "thermal_foundation"
 mandatory = true
-versionRange = "[11.0.6,)"
+versionRange = "[10.3.1,)"
 ordering = "NONE"
 side = "BOTH"
